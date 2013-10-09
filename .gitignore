@@ -11,9 +11,11 @@
 # generated files
 bin/
 gen/
+bin
+gen
 
 # Local configuration file (sdk path, etc)
-local.properties
+#local.properties
 
 # Eclipse project files
 .classpath
@@ -27,3 +29,15 @@ proguard/
 *.ipr
 *.iws
 .idea/
+
+# Svn
+.svn
+
+# Git
+.gitignore
+
+# Eclipse
+.DS_Store
+.settings/org.eclipse.jdt.core.prefs  
+.settings
+
