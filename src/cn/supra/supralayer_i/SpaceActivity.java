@@ -48,14 +48,18 @@ public class SpaceActivity extends Activity {
 	 */
 //	private SystemUiHider mSystemUiHider;
 	
-//	private ArrayList<View>
+	private LauncherClientView mLauncherClientView;
+	private ArrayList<BaseClientView> clients = new ArrayList<BaseClientView>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//App环境，Activity环境相关；
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER);
 
-		setContentView(R.layout.activity_space);
+		//LauncherClientView相关；
+		mLauncherClientView = new LauncherClientView(this);
+		setContentView(mLauncherClientView);
 
 //		final View controlsView = findViewById(R.id.fullscreen_content_controls);
 //		final View contentView = findViewById(R.id.fullscreen_content);
