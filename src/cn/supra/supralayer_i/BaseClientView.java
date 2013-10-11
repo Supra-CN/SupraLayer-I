@@ -9,5 +9,13 @@ public class BaseClientView extends FrameLayout {
 		super(context);
 		setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 	}
+	
+//	protected void onCreate(Bundle savedInstanceState);
+//	protected void onStart();
+//	protected void onRestart();
+//	protected void onResume();
+//	protected void onPause();
+//	protected void onStop();
+//	protected void onDestroy();
 
 }
