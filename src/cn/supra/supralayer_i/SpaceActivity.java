@@ -1,5 +1,7 @@
 package cn.supra.supralayer_i;
 
+import java.util.ArrayList;
+
 import cn.supra.supralayer_i.util.SystemUiHider;
 
 import android.annotation.TargetApi;
@@ -45,11 +47,13 @@ public class SpaceActivity extends Activity {
 	 * The instance of the {@link SystemUiHider} for this activity.
 	 */
 //	private SystemUiHider mSystemUiHider;
+	
+//	private ArrayList<View>
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER);
 
 		setContentView(R.layout.activity_space);
 
