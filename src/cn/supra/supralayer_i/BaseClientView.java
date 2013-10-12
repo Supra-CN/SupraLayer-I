@@ -1,6 +1,7 @@
 package cn.supra.supralayer_i;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.widget.FrameLayout;
 
 public class BaseClientView extends FrameLayout {
@@ -10,12 +11,12 @@ public class BaseClientView extends FrameLayout {
 		setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 	}
 	
-//	protected void onCreate(Bundle savedInstanceState);
-//	protected void onStart();
-//	protected void onRestart();
-//	protected void onResume();
-//	protected void onPause();
-//	protected void onStop();
-//	protected void onDestroy();
+	protected void onViewCreate(Bundle savedInstanceState){}
+	protected void onViewStart(){}
+	protected void onViewRestart(){}
+	protected void onViewResume(){}
+	protected void onViewPause(){}
+	protected void onViewStop(){}
+	protected void onViewDestroy(){}
 
 }
