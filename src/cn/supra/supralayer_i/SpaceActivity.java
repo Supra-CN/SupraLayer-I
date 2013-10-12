@@ -2,16 +2,11 @@ package cn.supra.supralayer_i;
 
 import java.util.ArrayList;
 
-import cn.supra.supralayer_i.util.SystemUiHider;
-
-import android.annotation.TargetApi;
 import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
 import android.view.WindowManager;
+import cn.supra.supralayer_i.managers.ClientManager;
+import cn.supra.supralayer_i.util.SystemUiHider;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -48,8 +43,8 @@ public class SpaceActivity extends Activity {
 	 */
 //	private SystemUiHider mSystemUiHider;
 	
-	private LauncherClientView mLauncherClientView;
-	private ArrayList<BaseClientView> clients = new ArrayList<BaseClientView>();
+	private LauncherClient mLauncherClient;
+	private ArrayList<BaseClient> clients = new ArrayList<BaseClient>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +53,8 @@ public class SpaceActivity extends Activity {
 		getWindow().addFlags(WindowManager.LayoutParams.FLAG_SHOW_WALLPAPER);
 
 		//LauncherClientView相关；
-		mLauncherClientView = new LauncherClientView(this);
-		setContentView(mLauncherClientView);
+		mLauncherClient = ClientManager.getInstance().getLauncherClient();
+		setContentView(mLauncherClient);
 
 //		final View controlsView = findViewById(R.id.fullscreen_content_controls);
 //		final View contentView = findViewById(R.id.fullscreen_content);

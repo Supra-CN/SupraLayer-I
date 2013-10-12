@@ -4,9 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 
-public class BaseClientView extends FrameLayout {
+public class BaseClient extends FrameLayout {
 
-	public BaseClientView(Context context) {
+	public BaseClient(Context context) {
 		super(context);
 		setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 	}
