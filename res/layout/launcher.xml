@@ -12,7 +12,8 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/view_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"            
             android:layout_gravity="top" >
 
             <android.support.v4.view.PagerTitleStrip
@@ -27,34 +28,39 @@
         </android.support.v4.view.ViewPager>
 
         <LinearLayout
-            android:id="@+id/handle_layout"
+            android:id="@+id/app_dock"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="0"
             android:orientation="horizontal" >
 
-            <View
+            <ImageButton
                 android:id="@+id/handle_view_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:src="@drawable/device_access_call" />
 
-            <View
+            <ImageButton
                 android:id="@+id/handle_view_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:src="@drawable/social_chat" />
 
-            <View
+            <ImageButton
                 android:id="@+id/handle_view_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:src="@drawable/social_cc_bcc" />
 
-            <View
+            <ImageButton
                 android:id="@+id/handle_view_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:src="@drawable/action_search" />
         </LinearLayout>
     </LinearLayout>
 
