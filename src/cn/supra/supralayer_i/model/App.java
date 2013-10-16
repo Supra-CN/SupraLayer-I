@@ -1,22 +1,27 @@
 package cn.supra.supralayer_i.model;
 
-import android.R.integer;
-import android.graphics.Bitmap;
-
-
-
-public abstract class App {
+/**
+ * App的基类
+ * @author supra
+ *
+ */
+public class App {
 	private int mAppID;
 	private String mNane;
-	private Bitmap 
+	private String mIconUri;
 		
 	public App(int appID) {
 		this(appID, "");
 	}
 	
-	public App(int appId, String name){
-		mAppID = appId;
+	public App(int appID, String name){
+		this(appID, name, "");
+	}
+	
+	public App(int appID, String name, String iconUri){
+		mAppID = appID;
 		mNane = name;
+		mIconUri = iconUri;
 	}
 	
 	public int getAppID(){
@@ -27,10 +32,8 @@ public abstract class App {
 		return mNane;
 	}
 	
-	public Bitmap getIcon(){
-		return getDefaultIcon();
+	public String getIconUri(){
+		return mIconUri;
 	}
 	
-	protected abstract Bitmap getDefaultIcon();
-		
 }
