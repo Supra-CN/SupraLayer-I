@@ -1,6 +1,7 @@
 package cn.supra.supralayer_i.ui.clients;
 
 import cn.supra.supralayer_i.R;
+import cn.supra.supralayer_i.define.EventDef;
 import cn.supra.supralayer_i.model.LauncherPagerAdapter;
 import android.content.Context;
 import android.os.Message;
@@ -16,12 +17,13 @@ import android.widget.LinearLayout;
 public class LauncherClient extends BaseClient{
 	private LauncherPagerAdapter mPagerAdapter;
 	private Context mContext;
+	private OnClickListener mOnClickListener;
 
 	public LauncherClient(Context context) {
 		super(context);
 		mContext = context;
 		View.inflate(context, R.layout.launcher, this);
-		initCommon();
+		initDock();
 		initPager();
 	}
 	
@@ -30,27 +32,31 @@ public class LauncherClient extends BaseClient{
 		viewPager.setAdapter(mPagerAdapter);
 	}
 	
-	private void initCommon(){
+	private void initDock(){
 		LinearLayout appDock = (LinearLayout)findViewById(R.id.app_dock);
 		
-		ImageButton callBtn = getAppView("");
-		
+//		ImageButton callBtn = getAppView("");
 		
 	}
 	
-	private ImageButton getAppView(String cmd){
+	private ImageButton getAppView(int event){
 		LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, 1);
 		ImageButton btn = new ImageButton(mContext);
 		btn.setLayoutParams(lp);
-		btn.setOnClickListener(new OnClickListener() {
+		btn.setOnClickListener(mOnClickListener);
+		return btn;
+	}
+	
+	private void initOnClickListener() {
+		mOnClickListener = new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Message msg = new Message();
-//				msg.what = 
+				// TODO Auto-generated method stub
+				
 			}
-		});
-		return btn;
+		};
+
 	}
 	
 	

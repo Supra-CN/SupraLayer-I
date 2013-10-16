@@ -4,5 +4,31 @@
     <string name="app_name">SupraLayer-I</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    
+    <string name="SslWarning">Security warning</string>
+    <string name="SslWarningsHeader">There are problems with the security certificate for this site (%s).</string>
+    <string name="SslUntrusted">This certificate is not from a trusted authority.</string>
+    <string name="SslIDMismatch">The name of the site does not match the name on the certificate.</string>
+    <string name="SslExpired">This certificate has expired.</string>
+    <string name="SslNotYetValid">This certificate is not valid yet.</string>
+    <string name="SslInvalid">This certificate is invalid.</string>
+    <string name="SslDateInvalid">This certificate date is invalid.</string>
+
+    <string-array name="DefaultBookmarksTitles">
+        <item>Google</item>
+        <item>Wikipedia</item>
+        <item>YouTube</item>
+        <item>Yahoo!</item>
+        <item>BBC</item>
+        <item>eBay</item>
+    </string-array>
+    <string-array name="DefaultBookmarksUrls">
+        <item>http://www.google.com/</item>
+        <item>http://en.wikipedia.org/</item>
+        <item>http://www.youtube.com/</item>
+        <item>http://www.yahoo.com/</item>
+        <item>http://www.bbc.co.uk/</item>
+        <item>http://www.ebay.com/</item>
+    </string-array>
 
 </resources>
