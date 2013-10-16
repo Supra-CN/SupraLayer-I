@@ -29,7 +29,7 @@ import android.net.Uri;
 
 public class SslExceptionsProvider extends ContentProvider {
 	
-	public static final String AUTHORITY = "org.tint.providers.sslexceptionsprovider";
+	public static final String AUTHORITY = "cn.supra.supralayer_i.providers.sslexceptionsprovider";
 	
 	private static final String SSL_EXCEPTIONS_TABLE = "sslexceptions";
 	

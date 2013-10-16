@@ -31,7 +31,8 @@ import android.text.TextUtils;
 
 public class BookmarksProvider extends ContentProvider {	
 	
-	public static final String AUTHORITY = "org.tint.providers.bookmarksprovider";
+//	public static final String AUTHORITY = "org.tint.providers.bookmarksprovider";
+	public static final String AUTHORITY = "cn.supra.supralayer_i.providers.bookmarksprovider";
 	
 	private static final String BOOKMARKS_TABLE = "bookmarks";
 	

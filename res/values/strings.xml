@@ -13,6 +13,14 @@
     <string name="SslNotYetValid">This certificate is not valid yet.</string>
     <string name="SslInvalid">This certificate is invalid.</string>
     <string name="SslDateInvalid">This certificate date is invalid.</string>
+    
+        
+    <string name="PermissionReadBookmarksLabel">Read Supra bookmarks</string>
+    <string name="PermissionReadBookmarksDescription">Allow third-party applications or addons to read Tint Browser\'s history and bookmarks database.</string>
+    
+	<string name="PermissionWriteBookmarksLabel">Write Supra bookmarks</string>
+    <string name="PermissionWriteBookmarksDescription">Allow third-party applications or addons to write Tint Browser\'s history and bookmarks database.</string>    
+    
 
     <string-array name="DefaultBookmarksTitles">
         <item>Google</item>
