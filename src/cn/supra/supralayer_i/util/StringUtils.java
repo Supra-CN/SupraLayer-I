@@ -353,7 +353,6 @@ public class StringUtils {
 
 	/**
 	 * 将windows下的字符串转换成linux的字符串
-	 * @author androidyue
 	 * @param content
 	 * @return
 	 */

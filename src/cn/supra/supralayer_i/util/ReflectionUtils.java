@@ -16,7 +16,6 @@ import android.view.Display;
  *       //View v=(View)ExecuteHideMethod.executeMethod(textView,"getDropDownAnchorView",null, null);
  *       View v=(View)ExecuteHideMethod.executeMethod(textView,"getDropDownAnchorView",new Class[]{} , new Object[] {});
  *       Log.e(LOGTAG,"test"+v.getId());
- * @author lijunjie
  *
  */
 public class ReflectionUtils {

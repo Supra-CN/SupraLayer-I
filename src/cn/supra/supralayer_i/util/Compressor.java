@@ -8,7 +8,6 @@ import java.util.zip.ZipOutputStream;
 
 /**
  * 压缩文件
- * @author lijun
  */
 public class Compressor {
 	

@@ -22,7 +22,6 @@ import org.apache.http.conn.ssl.SSLSocketFactory;
 
 /**
  * TODO  这个类和SuHttpClient的接口不一致，需要修改；同时没有提供get方法，没有支持类似cnwap的代理
- * @author androidyue
  *
  */
 public class SuHttpsClient {
@@ -75,7 +74,7 @@ public class SuHttpsClient {
 	public static class ResponseResult {
 		public int responseCode;
 		public String responseBody;
-		public String maxthonCode;
+		public String maxtCode;
 		
 		
 		@Override
@@ -155,8 +154,8 @@ public class SuHttpsClient {
 			ds.close();
 			String result = "";
 			int responseCode = connection.getResponseCode();
-			String code = connection.getHeaderField("X-Maxthon-Code");
-			Log.i("usnd", "X-Maxthon-Code: "+code);
+			String code = connection.getHeaderField("X-Maxt-Code");
+			Log.i("usnd", "X-Maxt-Code: "+code);
 			Log.i("DoRequest ResponseCode",
 					String.valueOf(responseCode));
 			InputStream is = connection.getInputStream();
@@ -172,7 +171,7 @@ public class SuHttpsClient {
 			ResponseResult resResult = new ResponseResult();
 			resResult.responseBody = result;
 			resResult.responseCode = responseCode;
-			resResult.maxthonCode = code;
+			resResult.maxtCode = code;
 			return resResult;
 		} catch (MalformedURLException e) {
 			Log.i("DoRequest", "MalformedURLException,postData  url = " + url + "; data = " + data);

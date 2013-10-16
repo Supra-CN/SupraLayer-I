@@ -216,7 +216,6 @@ public final class AppUtils {
 	 * @deprecated 请使用getConnectType()方法
 	 * @param c
 	 * @return
-	 * @author androidyue
 	 */
 	public static int getNetworkState(Context c) {
 		return getConnectType(c);
@@ -229,7 +228,6 @@ public final class AppUtils {
 	 * @param filepath
 	 * @param degrees
 	 * @return
-	 * @author huoniao
 	 */
 	public static Bitmap getRotationBitmap(Context context, String filepath,
 			int degrees) {
@@ -848,7 +846,6 @@ public final class AppUtils {
 	/**
 	 * 用于将2011-03-02 10:05:33格式的时间转换为“今天 10：05”格式的时间
 	 * 
-	 * @author huoniao
 	 * */
 	public static String getLocalTime(Context context, String time) {
 		// 取出年月日来，比较字符串即可
@@ -1278,7 +1275,6 @@ public final class AppUtils {
 	/**
 	 * 获取当前屏幕的一些属性 例如高度，宽度，横竖屏等
 	 * 
-	 * @author huoniao
 	 * */
 	public static String getScreenResolution(Activity activity) {
 		Display display = activity.getWindowManager().getDefaultDisplay();
@@ -1605,7 +1601,6 @@ public final class AppUtils {
 	/**
 	 * 开启硬件加速，傲游mm目前仅仅支持在4.0以上的系统开启硬件加速
 	 * 
-	 * @author huoniao
 	 */
 	public static void enableHardwareAcceleration(Window window) {
 		if (Build.VERSION.SDK_INT >= 11) {
