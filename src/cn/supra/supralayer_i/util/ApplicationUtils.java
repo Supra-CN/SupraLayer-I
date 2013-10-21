@@ -39,8 +39,18 @@ import android.widget.Toast;
 import cn.supra.supralayer_i.R;
 
 public class ApplicationUtils {
-	
+    private static boolean mIsTabletSet = false;
+    private static boolean mIsTablet;
 	private static int[] sBookmarksdimensions = null;
+	
+	   public static boolean isTablet(Context context) {
+	        if (!mIsTabletSet) {
+	            mIsTablet = context.getResources().getBoolean(R.bool.isTablet);
+	            mIsTabletSet = true;
+	        }
+	        
+	        return mIsTablet;
+	    }
 	
 	/**
 	 * Get the application version code.
@@ -230,5 +240,10 @@ public class ApplicationUtils {
 		
 		return result;
 	}
+	
+	   public static int getStartPageLayout(Context context) {
+	        
+	        return R.layout.start_page_fragment;
+	    }
 
 }

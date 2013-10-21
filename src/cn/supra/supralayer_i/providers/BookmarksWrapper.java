@@ -15,10 +15,6 @@
 
 package cn.supra.supralayer_i.providers;
 
-import java.io.ByteArrayOutputStream;
-import java.util.Calendar;
-import java.util.Date;
-
 import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
@@ -30,7 +26,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.util.Log;
+
+import cn.supra.supralayer_i.model.BookmarkHistoryItem;
 import cn.supra.supralayer_i.util.Constants;
+
+import java.io.ByteArrayOutputStream;
+import java.util.Calendar;
+import java.util.Date;
 
 public class BookmarksWrapper {
 	
@@ -103,27 +105,27 @@ public class BookmarksWrapper {
 		return contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, null, null, null);
 	}
 	
-//	public static BookmarkHistoryItem getBookmarkById(ContentResolver contentResolver, long id) {
-//		BookmarkHistoryItem result = null;
-//		String whereClause = BookmarksProvider.Columns._ID + " = " + id;
-//		
-//		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
-//		if (c != null) {
-//			if (c.moveToFirst()) {				
-//				String title = c.getString(c.getColumnIndex(BookmarksProvider.Columns.TITLE));
-//                String url = c.getString(c.getColumnIndex(BookmarksProvider.Columns.URL));
-//                boolean isBookmarks = c.getInt(c.getColumnIndex(BookmarksProvider.Columns.BOOKMARK)) > 0 ? true : false;
-//                boolean isFolder = c.getInt(c.getColumnIndex(BookmarksProvider.Columns.IS_FOLDER)) > 0 ? true : false;
-//                long folderId = c.getLong(c.getColumnIndex(BookmarksProvider.Columns.PARENT_FOLDER_ID));
-//                byte[] favIcon = c.getBlob(c.getColumnIndex(BookmarksProvider.Columns.FAVICON));
-//                result = new BookmarkHistoryItem(id, title, url, isBookmarks, isFolder, folderId, favIcon);
-//			}
-//			
-//			c.close();
-//		}
-//		
-//		return result;
-//	}
+	public static BookmarkHistoryItem getBookmarkById(ContentResolver contentResolver, long id) {
+		BookmarkHistoryItem result = null;
+		String whereClause = BookmarksProvider.Columns._ID + " = " + id;
+		
+		Cursor c = contentResolver.query(BookmarksProvider.BOOKMARKS_URI, HISTORY_BOOKMARKS_PROJECTION, whereClause, null, null);
+		if (c != null) {
+			if (c.moveToFirst()) {				
+				String title = c.getString(c.getColumnIndex(BookmarksProvider.Columns.TITLE));
+                String url = c.getString(c.getColumnIndex(BookmarksProvider.Columns.URL));
+                boolean isBookmarks = c.getInt(c.getColumnIndex(BookmarksProvider.Columns.BOOKMARK)) > 0 ? true : false;
+                boolean isFolder = c.getInt(c.getColumnIndex(BookmarksProvider.Columns.IS_FOLDER)) > 0 ? true : false;
+                long folderId = c.getLong(c.getColumnIndex(BookmarksProvider.Columns.PARENT_FOLDER_ID));
+                byte[] favIcon = c.getBlob(c.getColumnIndex(BookmarksProvider.Columns.FAVICON));
+                result = new BookmarkHistoryItem(id, title, url, isBookmarks, isFolder, folderId, favIcon);
+			}
+			
+			c.close();
+		}
+		
+		return result;
+	}
 	
 	/**
 	 * Clear the history/bookmarks table.

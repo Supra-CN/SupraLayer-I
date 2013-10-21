@@ -20,7 +20,9 @@
     
 	<string name="PermissionWriteBookmarksLabel">Write Supra bookmarks</string>
     <string name="PermissionWriteBookmarksDescription">Allow third-party applications or addons to write Tint Browser\'s history and bookmarks database.</string>    
-    
+  
+    <string name="Folder">Folder</string>
+    <string name="Bookmarks">Bookmarks</string>
 
     <string-array name="DefaultBookmarksTitles">
         <item>Google</item>
