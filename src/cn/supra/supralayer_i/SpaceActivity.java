@@ -15,6 +15,7 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.ActionMode;
 import android.view.WindowManager;
 import android.webkit.WebIconDatabase;
 import android.widget.FrameLayout;
@@ -147,6 +148,27 @@ public class SpaceActivity extends Activity implements UIManagerProvider {
         filter.addAction(DownloadManager.ACTION_NOTIFICATION_CLICKED);
 
     }
+    
+    @Override
+    protected void onPause() {
+        super.onPause();
+        
+        mUIManager.onMainActivityPause();
+    }
+    
+    @Override
+    protected void onDestroy() {
+        WebIconDatabase.getInstance().close();
+        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(mPreferenceChangeListener);
+        unregisterReceiver(mPackagesReceiver);
+        super.onDestroy();
+    }
+    
+    @Override
+    protected void onStart() {
+//      Controller.getInstance().getAddonManager().bindAddons();
+        super.onStart();
+    }
 
     @Override
     protected void onStop() {
@@ -163,7 +185,19 @@ public class SpaceActivity extends Activity implements UIManagerProvider {
         super.onNewIntent(intent);
         mUIManager.onNewIntent(intent);
     }
+    
+    @Override
+    public void onActionModeFinished(ActionMode mode) {     
+        super.onActionModeFinished(mode);
+        mUIManager.onActionModeFinished(mode);
+    }
 
+    @Override
+    public void onActionModeStarted(ActionMode mode) {      
+        super.onActionModeStarted(mode);
+        mUIManager.onActionModeStarted(mode);
+    }
+    
     @Override
     public UIManager getUIManager() {
         // TODO Auto-generated method stub
@@ -179,4 +213,18 @@ public class SpaceActivity extends Activity implements UIManagerProvider {
         db.open(getDir("icons", 0).getPath());
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // TODO Do nothing for now, as default implementation mess up with tabs/fragment management.
+        // In the future, save and restore tabs.
+        //super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        // TODO Do nothing for now, as default implementation mess up with tabs/fragment management.
+        // In the future, save and restore tabs.
+        //super.onRestoreInstanceState(savedInstanceState);
+    }
+    
 }

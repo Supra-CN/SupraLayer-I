@@ -141,7 +141,8 @@ public abstract class BaseUIManager implements UIManager {//, WebViewFragmentLis
     
     @Override
     public void loadUrl(String url) {
-        loadUrl(getCurrentWebViewFragment(), url);
+        BaseWebViewFragment fragment = getCurrentWebViewFragment();
+        loadUrl(fragment, url);
     }
     
     @Override

@@ -26,5 +26,44 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
     </FrameLayout>
+    
+        <RelativeLayout
+        android:id="@+id/TopBar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"        
+        android:layout_alignParentTop="true"
+        android:layout_margin="0dip"
+        android:padding="0dip"
+        android:scaleType="fitXY"
+        android:orientation="horizontal" >       	            
+        
+        <ProgressBar
+        android:id="@+id/WebViewProgress"
+        style="@android:style/Widget.Holo.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dip"
+        android:layout_marginLeft="0dip"
+        android:layout_marginRight="0dip"
+        android:indeterminate="false"
+        android:maxHeight="4dp"
+        android:minHeight="4dp" >
+    </ProgressBar>
+
+    </RelativeLayout>
+    
+        
+    <LinearLayout
+        android:id="@+id/BottomBar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+        android:layout_alignParentBottom="true"
+        android:scaleType="fitXY"
+        android:orientation="horizontal"
+        android:weightSum="5" 
+        >
+    </LinearLayout>
+    
+    
 
 </RelativeLayout>

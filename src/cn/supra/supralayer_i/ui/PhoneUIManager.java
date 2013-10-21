@@ -14,11 +14,11 @@ import android.view.ActionMode;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.WebView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
@@ -30,7 +30,6 @@ import cn.supra.supralayer_i.ui.fragments.BaseWebViewFragment;
 import cn.supra.supralayer_i.ui.fragments.LauncherFragment;
 import cn.supra.supralayer_i.ui.fragments.LauncherFragment.OnStartPageItemClickedListener;
 import cn.supra.supralayer_i.ui.fragments.PhoneWebViewFragment;
-import cn.supra.supralayer_i.util.ApplicationUtils;
 import cn.supra.supralayer_i.util.Constants;
 
 import java.util.ArrayList;
@@ -76,8 +75,8 @@ public class PhoneUIManager extends BaseUIManager {
 //    private ImageView mShowPreviousTab;
 //    private ImageView mShowNextTab;
 
-//    private RelativeLayout mTopBar;
-//    private LinearLayout mBottomBar;
+    private RelativeLayout mTopBar;
+    private LinearLayout mBottomBar;
 
     private ProgressBar mProgressBar;
 
@@ -85,7 +84,7 @@ public class PhoneUIManager extends BaseUIManager {
 
     private int mToolbarsDisplayDuration;
 
-//    private ToolbarsAnimator mToolbarsAnimator;
+    private ToolbarsAnimator mToolbarsAnimator;
 
     private GestureDetector mGestureDetector;
 
@@ -250,7 +249,7 @@ public class PhoneUIManager extends BaseUIManager {
     public void onPageStarted(WebView view, String url, Bitmap favicon) {
         if (view == getCurrentWebView()) {
             setToolbarsVisibility(true);
-//            mProgressBar.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.VISIBLE);
 //            mFaviconView.setVisibility(View.INVISIBLE);
 
 //            mUrlBar.setUrl(url);
@@ -267,7 +266,7 @@ public class PhoneUIManager extends BaseUIManager {
 
         if (view == getCurrentWebView()) {
 //            mFaviconView.setVisibility(View.VISIBLE);
-//            mProgressBar.setVisibility(View.INVISIBLE);
+            mProgressBar.setVisibility(View.INVISIBLE);
 
 //            mUrlBar.setUrl(url);
 //
@@ -281,7 +280,7 @@ public class PhoneUIManager extends BaseUIManager {
     @Override
     public void onProgressChanged(WebView view, int newProgress) {
         if (view == getCurrentWebView()) {
-//            mProgressBar.setProgress(newProgress);
+            mProgressBar.setProgress(newProgress);
         }
     }
 
@@ -321,9 +320,9 @@ public class PhoneUIManager extends BaseUIManager {
     public void onActionModeStarted(ActionMode mode) {
         mActionMode = mode;
 
-//        if (mToolbarsAnimator.isToolbarsVisible()) {
-//            mTopBar.animate().translationY(mTopBar.getHeight());
-//        }
+        if (mToolbarsAnimator.isToolbarsVisible()) {
+            mTopBar.animate().translationY(mTopBar.getHeight());
+        }
     }
 
     @Override
@@ -331,9 +330,9 @@ public class PhoneUIManager extends BaseUIManager {
         if (mActionMode != null) {
             mActionMode = null;
 
-//            if (mToolbarsAnimator.isToolbarsVisible()) {
-//                mTopBar.animate().translationY(0);
-//            }
+            if (mToolbarsAnimator.isToolbarsVisible()) {
+                mTopBar.animate().translationY(0);
+            }
 
             InputMethodManager mgr = (InputMethodManager) mActivity
                     .getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -371,7 +370,7 @@ public class PhoneUIManager extends BaseUIManager {
 
         mDefaultFavicon = new BitmapDrawable(mActivity.getResources(), bm);
 
-//        mProgressBar = (ProgressBar) mActivity.findViewById(R.id.WebViewProgress);
+        mProgressBar = (ProgressBar) mActivity.findViewById(R.id.WebViewProgress);
 
 //        mUrlBar = (PhoneUrlBar) mActivity.findViewById(R.id.UrlBar);
 //
@@ -428,21 +427,21 @@ public class PhoneUIManager extends BaseUIManager {
 
 //        mFaviconView.setImageDrawable(mDefaultFavicon);
 
-//        mTopBar = (RelativeLayout) mActivity.findViewById(R.id.TopBar);
-//        mTopBar.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View arg0) {
-//                // Steal event from WebView.
-//            }
-//        });
+        mTopBar = (RelativeLayout) mActivity.findViewById(R.id.TopBar);
+        mTopBar.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                // Steal event from WebView.
+            }
+        });
 
-//        mBottomBar = (LinearLayout) mActivity.findViewById(R.id.BottomBar);
-//        mBottomBar.setOnClickListener(new OnClickListener() {
-//            @Override
-//            public void onClick(View arg0) {
-//                // Steal event from WebView.
-//            }
-//        });
+        mBottomBar = (LinearLayout) mActivity.findViewById(R.id.BottomBar);
+        mBottomBar.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                // Steal event from WebView.
+            }
+        });
 
 //        mBack = (ImageView) mActivity.findViewById(R.id.BtnBack);
 //        mBack.setOnClickListener(new OnClickListener() {
@@ -528,8 +527,7 @@ public class PhoneUIManager extends BaseUIManager {
 
         updateBubblesVisibility();
 
-//        mToolbarsAnimator = new ToolbarsAnimator(mTopBar, mBottomBar, mShowPreviousTab,
-//                mShowNextTab);
+        mToolbarsAnimator = new ToolbarsAnimator(mTopBar, mBottomBar);
 
         startHideToolbarsThread();
     }
@@ -648,32 +646,32 @@ public class PhoneUIManager extends BaseUIManager {
     }
 
     private void updateUrlBar() {
-//        CustomWebView currentWebView;
-//        BaseWebViewFragment currentFragment = getCurrentWebViewFragment();
-//
-//        if ((currentFragment != null) &&
-//                (currentFragment.isStartPageShown())) {
-//            currentWebView = null;
-//
-//            if (!mToolbarsAnimator.isToolbarsVisible()) {
-//                setToolbarsVisibility(true);
-//            }
-//        } else {
-//            currentWebView = getCurrentWebView();
-//        }
-//
-//        if (currentWebView != null) {
-//            String title = currentWebView.getTitle();
-//            String url = currentWebView.getUrl();
-//            Bitmap icon = currentWebView.getFavicon();
-//
+        CustomWebView currentWebView;
+        BaseWebViewFragment currentFragment = getCurrentWebViewFragment();
+
+        if ((currentFragment != null) &&
+                (currentFragment.isStartPageShown())) {
+            currentWebView = null;
+
+            if (!mToolbarsAnimator.isToolbarsVisible()) {
+                setToolbarsVisibility(true);
+            }
+        } else {
+            currentWebView = getCurrentWebView();
+        }
+
+        if (currentWebView != null) {
+            String title = currentWebView.getTitle();
+            String url = currentWebView.getUrl();
+            Bitmap icon = currentWebView.getFavicon();
+
 //            if ((title != null) &&
 //                    (!title.isEmpty())) {
 //                mUrlBar.setTitle(title);
 //            } else {
 //                mUrlBar.setTitle(R.string.ApplicationName);
 //            }
-//
+
 //            if ((url != null) &&
 //                    (!url.isEmpty())) {
 //                mUrlBar.setSubtitle(url);
@@ -682,33 +680,33 @@ public class PhoneUIManager extends BaseUIManager {
 //                mUrlBar.setSubtitle(R.string.UrlBarUrlDefaultSubTitle);
 //                mUrlBar.setUrl(null);
 //            }
-//
-//            setApplicationButtonImage(icon);
-//
-//            if (currentWebView.isLoading()) {
-//                mProgressBar.setVisibility(View.VISIBLE);
+
+            setApplicationButtonImage(icon);
+
+            if (currentWebView.isLoading()) {
+                mProgressBar.setVisibility(View.VISIBLE);
 //                mFaviconView.setVisibility(View.INVISIBLE);
 //                mUrlBar.setGoStopReloadImage(R.drawable.ic_stop);
-//            } else {
+            } else {
 //                mFaviconView.setVisibility(View.VISIBLE);
-//                mProgressBar.setVisibility(View.INVISIBLE);
+                mProgressBar.setVisibility(View.INVISIBLE);
 //                mUrlBar.setGoStopReloadImage(R.drawable.ic_refresh);
-//            }
-//
-//            updateBackForwardEnabled();
-//        } else {
+            }
+
+            updateBackForwardEnabled();
+        } else {
 //            mUrlBar.setTitle(R.string.ApplicationName);
 //            mUrlBar.setSubtitle(R.string.UrlBarUrlDefaultSubTitle);
 //            mFaviconView.setImageDrawable(mDefaultFavicon);
-//
+
 //            mFaviconView.setVisibility(View.VISIBLE);
-//            mProgressBar.setVisibility(View.INVISIBLE);
-//
+            mProgressBar.setVisibility(View.INVISIBLE);
+
 //            mUrlBar.setUrl(null);
 //            mBack.setEnabled(false);
 //            mForward.setEnabled(false);
-//        }
-//
+        }
+
 //        mUrlBar.setPrivateBrowsingIndicator(currentFragment != null ? currentFragment
 //                .isPrivateBrowsingEnabled() : false);
     }
