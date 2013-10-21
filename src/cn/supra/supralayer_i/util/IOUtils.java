@@ -15,16 +15,17 @@
 
 package cn.supra.supralayer_i.util;
 
+import android.content.Context;
+import android.os.Environment;
+
+import cn.supra.supralayer_i.R;
+
 import java.io.File;
 import java.io.FileFilter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import android.content.Context;
-import android.os.Environment;
-import cn.supra.supralayer_i.R;
 
 public class IOUtils {
 	
@@ -72,15 +73,15 @@ public class IOUtils {
 	
 	public static String checkCardState(Context context) {
 		// Check to see if we have an SDCard
-//        String status = Environment.getExternalStorageState();
-//        if (!status.equals(Environment.MEDIA_MOUNTED)) {
-//        	// Check to see if the SDCard is busy, same as the music app
-//            if (status.equals(Environment.MEDIA_SHARED)) {
-//                return context.getString(R.string.SDCardErrorSDUnavailable);
-//            } else {
-//                return context.getString(R.string.SDCardErrorNoSDMsg);
-//            }
-//        }
+        String status = Environment.getExternalStorageState();
+        if (!status.equals(Environment.MEDIA_MOUNTED)) {
+        	// Check to see if the SDCard is busy, same as the music app
+            if (status.equals(Environment.MEDIA_SHARED)) {
+                return context.getString(R.string.SDCardErrorSDUnavailable);
+            } else {
+                return context.getString(R.string.SDCardErrorNoSDMsg);
+            }
+        }
 		
 		return null;		
 	}

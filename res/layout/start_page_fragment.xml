@@ -13,30 +13,66 @@
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
- -->
+-->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="?android:attr/actionBarSize"
-    android:paddingBottom="?android:attr/actionBarSize"    
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    >
 
     <GridView
         android:id="@+id/StartPageFragmentGrid"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:layout_marginBottom="@dimen/startpage_fragment_margin_top_bottom"
         android:layout_marginLeft="@dimen/startpage_fragment_margin_left_right"
         android:layout_marginRight="@dimen/startpage_fragment_margin_left_right"
-        android:layout_marginTop="@dimen/startpage_fragment_margin_top_bottom"        
+        android:layout_marginTop="@dimen/startpage_fragment_margin_top_bottom"
+        android:layout_weight="1"
+        android:columnWidth="@dimen/startpage_fragment_column_width"
         android:gravity="center"
+        android:horizontalSpacing="@dimen/startpage_fragment_horizontal_spacing"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
-        android:columnWidth="@dimen/startpage_fragment_column_width"
-        android:horizontalSpacing="@dimen/startpage_fragment_horizontal_spacing"
         android:verticalSpacing="@dimen/startpage_fragment_vertical_spacing" >
-
     </GridView>
+
+    <LinearLayout
+        android:id="@+id/app_dock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/handle_view_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/device_access_call" />
+
+        <ImageButton
+            android:id="@+id/handle_view_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/social_chat" />
+
+        <ImageButton
+            android:id="@+id/handle_view_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/social_cc_bcc" />
+
+        <ImageButton
+            android:id="@+id/handle_view_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/action_search" />
+    </LinearLayout>
+
 
 </LinearLayout>

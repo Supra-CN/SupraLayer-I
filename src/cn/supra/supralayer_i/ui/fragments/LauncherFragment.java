@@ -34,6 +34,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import cn.supra.supralayer_i.R;
+import cn.supra.supralayer_i.model.BookmarkHistoryItem;
 import cn.supra.supralayer_i.model.BookmarksAdapter;
 import cn.supra.supralayer_i.providers.BookmarksProvider;
 import cn.supra.supralayer_i.providers.BookmarksWrapper;
@@ -101,18 +102,18 @@ public class LauncherFragment extends Fragment implements LoaderManager.LoaderCa
             
             mGrid.setAdapter(mAdapter);
             
-//            mGrid.setOnItemClickListener(new OnItemClickListener() {
-//                @Override
-//                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-//                    if (mListener != null) {
-//                        BookmarkHistoryItem item = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), id);
-//
-//                        if (item != null) {
-//                            mListener.onStartPageItemClicked(item.getUrl());
-//                        }
-//                    }
-//                }
-//            });
+            mGrid.setOnItemClickListener(new OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                    if (mListener != null) {
+                        BookmarkHistoryItem item = BookmarksWrapper.getBookmarkById(getActivity().getContentResolver(), id);
+
+                        if (item != null) {
+                            mListener.onStartPageItemClicked(item.getUrl());
+                        }
+                    }
+                }
+            });
             
             mGrid.setOnTouchListener(mUIManager);       
             

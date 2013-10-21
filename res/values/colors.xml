@@ -1,5 +1,7 @@
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <color name="black_overlay">#66000000</color>
+        <color name="bookmarkListFaviconBackground">#23ffffff</color>
+    
 
 </resources>

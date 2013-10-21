@@ -18,6 +18,7 @@ package cn.supra.supralayer_i.util;
 import android.content.Context;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
+
 import cn.supra.supralayer_i.R;
 
 /**
@@ -32,25 +33,22 @@ public class UrlUtils {
 	 * @return True if the string is an url.
 	 */
 	public static boolean isUrl(String url) {
-		return 
-			url.contains(".") ||
-			url.equals(Constants.URL_ABOUT_BLANK) ||
+		return url.equals(Constants.URL_ABOUT_BLANK) ||
 			url.equals(Constants.URL_ABOUT_START) ||
-			url.equals(Constants.URL_ABOUT_TUTORIAL);
+			url.contains(".");
 	}
 	
 	public static String getRawSearchUrl(Context context) {
-//		String currentSearchUrl = PreferenceManager.getDefaultSharedPreferences(context).getString(Constants.PREFERENCE_SEARCH_URL, context.getString(R.string.SearchUrlGoogle));
-//		if (currentSearchUrl.contains("%s")) {
-//			currentSearchUrl = currentSearchUrl.replaceAll("%s", "{searchTerms}");
-//			
-//			Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
-//			editor.putString(Constants.PREFERENCE_SEARCH_URL, currentSearchUrl);
-//			editor.commit();
-//		}
-//		
-//		return currentSearchUrl;
-		return null;
+		String currentSearchUrl = PreferenceManager.getDefaultSharedPreferences(context).getString(Constants.PREFERENCE_SEARCH_URL, context.getString(R.string.SearchUrlGoogle));
+		if (currentSearchUrl.contains("%s")) {
+			currentSearchUrl = currentSearchUrl.replaceAll("%s", "{searchTerms}");
+			
+			Editor editor = PreferenceManager.getDefaultSharedPreferences(context).edit();
+			editor.putString(Constants.PREFERENCE_SEARCH_URL, currentSearchUrl);
+			editor.commit();
+		}
+		
+		return currentSearchUrl;
 	}
 	
 	/**
@@ -77,8 +75,7 @@ public class UrlUtils {
     				(!url.startsWith("https://")) &&
     				(!url.startsWith("file://")) &&
     				(!url.startsWith(Constants.URL_ABOUT_BLANK)) &&
-    				(!url.startsWith(Constants.URL_ABOUT_START)) &&
-    				(!url.startsWith(Constants.URL_ABOUT_TUTORIAL))) {
+    				(!url.startsWith(Constants.URL_ABOUT_START))) {
     			
     			url = "http://" + url;
     			

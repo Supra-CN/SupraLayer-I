@@ -39,7 +39,6 @@ public class Constants {
 	 */
 	public static final String URL_ABOUT_BLANK = "about:blank";
 	public static final String URL_ABOUT_START = "about:start";
-	public static final String URL_ABOUT_TUTORIAL = "about:tutorial";
 	
 	/**
 	 * User agents
@@ -88,11 +87,6 @@ public class Constants {
 	
 	public static final String PREFERENCE_FULL_SCREEN = "PREFERENCE_FULL_SCREEN";
 	
-	public static final String PREFERENCE_RESTORE_TABS = "PREFERENCE_RESTORE_TABS";
-	
-	public static final String PREFERENCE_UI_TYPE = "PREFERENCE_UI_TYPE";
-	public static final String PREFERENCE_CLOSE_PANEL_ON_NEW_TAB = "PREFERENCE_CLOSE_PANEL_ON_NEW_TAB";
-	
 	/**
 	 * Technical preferences.
 	 */
@@ -100,6 +94,5 @@ public class Constants {
 	public static final String TECHNICAL_PREFERENCE_FIRST_RUN = "TECHNICAL_PREFERENCE_FIRST_RUN";
 	public static final String TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE = "TECHNICAL_PREFERENCE_LAST_RUN_VERSION_CODE";
 	public static final String TECHNICAL_PREFERENCE_ADDON_ENABLED = "TECHNICAL_PREFERENCE_ADDON_ENABLED_";
-	public static final String TECHNICAL_PREFERENCE_SAVED_TABS = "TECHNICAL_PREFERENCE_SAVED_TABS";
-	public static final String TECHNICAL_PREFERENCE_HOMEPAGE_URL_UPDATE_NEEDED = "TECHNICAL_PREFERENCE_HOMEPAGE_URL_UPDATE_NEEDED";
+
 }

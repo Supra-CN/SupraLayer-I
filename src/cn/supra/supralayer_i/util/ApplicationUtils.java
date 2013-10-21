@@ -15,11 +15,6 @@
 
 package cn.supra.supralayer_i.util;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ClipData;
@@ -36,21 +31,45 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.widget.Toast;
+
 import cn.supra.supralayer_i.R;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 public class ApplicationUtils {
-    private static boolean mIsTabletSet = false;
-    private static boolean mIsTablet;
+	
 	private static int[] sBookmarksdimensions = null;
 	
-	   public static boolean isTablet(Context context) {
-	        if (!mIsTabletSet) {
-	            mIsTablet = context.getResources().getBoolean(R.bool.isTablet);
-	            mIsTabletSet = true;
-	        }
-	        
-	        return mIsTablet;
-	    }
+	private static boolean mIsTabletSet = false;
+	private static boolean mIsTablet;
+	
+	public static boolean isTablet(Context context) {
+		if (!mIsTabletSet) {
+			mIsTablet = context.getResources().getBoolean(R.bool.isTablet);
+			mIsTabletSet = true;
+		}
+		
+		return mIsTablet;
+	}
+	
+//	public static int getMenuResource(Context context) {
+//		if (isTablet(context)) {
+//			return R.menu.main_activity_menu_tablet;
+//		}
+//		
+//		return R.menu.main_activity_menu;
+//	}
+	
+	public static int getStartPageLayout(Context context) {
+//		if (isTablet(context)) {
+//			return R.layout.start_page_fragment_tablet;
+//		}
+		
+		return R.layout.start_page_fragment;
+	}
 	
 	/**
 	 * Get the application version code.
@@ -76,36 +95,44 @@ public class ApplicationUtils {
 		return result;
 	}
 	
+	/**
+	 * Load the changelog string.
+	 * @param context The current context.
+	 * @return The changelog string.
+	 */
+//	public static String getChangelogString(Context context) {
+//		return getStringFromRawResource(context, R.raw.changelog);
+//	}
+	
 	public static BitmapDrawable getApplicationButtonImage(Activity activity, Bitmap icon) {
-//		if (icon != null) {
-//			int buttonSize = activity.getResources().getInteger(R.integer.application_button_size);
-//			int size = activity.getResources().getInteger(R.integer.favicon_size);
-//			
-//			Drawable d = activity.getResources().getDrawable(R.drawable.bookmark_list_favicon_bg);						
-//			Bitmap bm = Bitmap.createBitmap(buttonSize, buttonSize, Bitmap.Config.ARGB_8888);
-//			
-//			Canvas canvas = new Canvas(bm);
-//			d.setBounds(0, 0, buttonSize, buttonSize);
-//			d.draw(canvas);
-//
-//			BitmapDrawable favIcon = new BitmapDrawable(activity.getResources(), icon);
-//			favIcon.setBounds((buttonSize / 2) - (size / 2), (buttonSize / 2) - (size / 2), (buttonSize / 2) + (size / 2), (buttonSize / 2) + (size / 2));
-//			favIcon.draw(canvas);
-//			
-//			return new BitmapDrawable(activity.getResources(), bm);
-//		} else {
+		if (icon != null) {
+			int buttonSize = activity.getResources().getInteger(R.integer.application_button_size);
+			int size = activity.getResources().getInteger(R.integer.favicon_size);
+			
+			Drawable d = activity.getResources().getDrawable(R.drawable.bookmark_list_favicon_bg);						
+			Bitmap bm = Bitmap.createBitmap(buttonSize, buttonSize, Bitmap.Config.ARGB_8888);
+			
+			Canvas canvas = new Canvas(bm);
+			d.setBounds(0, 0, buttonSize, buttonSize);
+			d.draw(canvas);
+
+			BitmapDrawable favIcon = new BitmapDrawable(activity.getResources(), icon);
+			favIcon.setBounds((buttonSize / 2) - (size / 2), (buttonSize / 2) - (size / 2), (buttonSize / 2) + (size / 2), (buttonSize / 2) + (size / 2));
+			favIcon.draw(canvas);
+			
+			return new BitmapDrawable(activity.getResources(), bm);
+		} else {
 			return null;
-//		}
+		}
 	}
 	
 	public static int[] getBookmarksThumbnailsDimensions(Context context) {
-//		if (sBookmarksdimensions == null) {
-//			Drawable d = context.getResources().getDrawable(R.drawable.browser_thumbnail);
-//			sBookmarksdimensions = new int[] { d.getIntrinsicWidth(), d.getIntrinsicHeight() };
-//		}
-//		
-//		return sBookmarksdimensions;
-		return null;
+		if (sBookmarksdimensions == null) {
+			Drawable d = context.getResources().getDrawable(R.drawable.browser_thumbnail);
+			sBookmarksdimensions = new int[] { d.getIntrinsicWidth(), d.getIntrinsicHeight() };
+		}
+		
+		return sBookmarksdimensions;
 	}
 	
 	/**
@@ -115,17 +142,17 @@ public class ApplicationUtils {
 	 * @param url The page url.
 	 */
 	public static void sharePage(Activity activity, String title, String url) {
-//    	Intent shareIntent = new Intent(Intent.ACTION_SEND);
-//    	
-//    	shareIntent.setType("text/plain");
-//    	shareIntent.putExtra(Intent.EXTRA_TEXT, url);
-//    	shareIntent.putExtra(Intent.EXTRA_SUBJECT, title);
-//    	
-//    	try {
-//    		activity.startActivity(Intent.createChooser(shareIntent, activity.getString(R.string.ShareChooserTitle)));
-//        } catch(android.content.ActivityNotFoundException ex) {
-//            // if no app handles it, do nothing
-//        }
+    	Intent shareIntent = new Intent(Intent.ACTION_SEND);
+    	
+    	shareIntent.setType("text/plain");
+    	shareIntent.putExtra(Intent.EXTRA_TEXT, url);
+    	shareIntent.putExtra(Intent.EXTRA_SUBJECT, title);
+    	
+    	try {
+    		activity.startActivity(Intent.createChooser(shareIntent, activity.getString(R.string.ShareChooserTitle)));
+        } catch(android.content.ActivityNotFoundException ex) {
+            // if no app handles it, do nothing
+        }
     }
 	
 	/**
@@ -169,40 +196,40 @@ public class ApplicationUtils {
 	 * @param onYes The dialog listener for the yes button.
 	 */
 	public static void showYesNoDialog(Context context, int icon, int title, String message, DialogInterface.OnClickListener onYes) {
-//		AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//    	builder.setCancelable(true);
-//    	builder.setIcon(icon);
-//    	builder.setTitle(context.getResources().getString(title));
-//    	builder.setMessage(message);
-//
-//    	builder.setInverseBackgroundForced(true);
-//    	builder.setPositiveButton(context.getResources().getString(R.string.Yes), onYes);
-//    	builder.setNegativeButton(context.getResources().getString(R.string.No), new DialogInterface.OnClickListener() {
-//    		@Override
-//    		public void onClick(DialogInterface dialog, int which) {
-//    			dialog.dismiss();
-//    		}
-//    	});
-//    	AlertDialog alert = builder.create();
-//    	alert.show();
+		AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    	builder.setCancelable(true);
+    	builder.setIcon(icon);
+    	builder.setTitle(context.getResources().getString(title));
+    	builder.setMessage(message);
+
+    	builder.setInverseBackgroundForced(true);
+    	builder.setPositiveButton(context.getResources().getString(R.string.Yes), onYes);
+    	builder.setNegativeButton(context.getResources().getString(R.string.No), new DialogInterface.OnClickListener() {
+    		@Override
+    		public void onClick(DialogInterface dialog, int which) {
+    			dialog.dismiss();
+    		}
+    	});
+    	AlertDialog alert = builder.create();
+    	alert.show();
 	}
 	
 	public static void showErrorDialog(Context context, String title, String message) {
-//		new AlertDialog.Builder(context)
-//        .setTitle(title)
-//        .setIcon(android.R.drawable.ic_dialog_alert)
-//        .setMessage(message)
-//        .setPositiveButton(R.string.OK, null)
-//        .show();
+		new AlertDialog.Builder(context)
+        .setTitle(title)
+        .setIcon(android.R.drawable.ic_dialog_alert)
+        .setMessage(message)
+        .setPositiveButton(R.string.OK, null)
+        .show();
 	}
 	
 	public static void showMessageDialog(Context context, String title, String message) {
-//		new AlertDialog.Builder(context)
-//        .setTitle(title)
-//        .setIcon(android.R.drawable.ic_dialog_info)
-//        .setMessage(message)
-//        .setPositiveButton(R.string.OK, null)
-//        .show();
+		new AlertDialog.Builder(context)
+        .setTitle(title)
+        .setIcon(android.R.drawable.ic_dialog_info)
+        .setMessage(message)
+        .setPositiveButton(R.string.OK, null)
+        .show();
 	}
 	
 	/**
@@ -211,7 +238,7 @@ public class ApplicationUtils {
 	 * @param resourceId The resource id.
 	 * @return The loaded string.
 	 */
-	public static String getStringFromRawResource(Context context, int resourceId) {
+	private static String getStringFromRawResource(Context context, int resourceId) {
 		String result = null;
 		
 		InputStream is = context.getResources().openRawResource(resourceId);
@@ -240,10 +267,5 @@ public class ApplicationUtils {
 		
 		return result;
 	}
-	
-	   public static int getStartPageLayout(Context context) {
-	        
-	        return R.layout.start_page_fragment;
-	    }
 
 }
