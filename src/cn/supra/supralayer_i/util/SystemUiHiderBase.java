@@ -14,8 +14,8 @@ public class SystemUiHiderBase extends SystemUiHider {
 	 * from calls to {@link #hide()} and {@link #show()}.
 	 */
 	private boolean mVisible = true;
-
 	/**
+
 	 * Constructor not intended to be called by clients. Use
 	 * {@link SystemUiHider#getInstance} to obtain an instance.
 	 */

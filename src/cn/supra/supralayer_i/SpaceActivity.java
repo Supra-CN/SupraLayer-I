@@ -16,6 +16,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.ActionMode;
+import android.view.KeyEvent;
+import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebIconDatabase;
 import android.widget.FrameLayout;
@@ -178,6 +180,30 @@ public class SpaceActivity extends Activity implements UIManagerProvider {
             // mSpaceView.removeAllViews();
         }
 
+    }
+    
+    
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+            Log.i("onKey", "keyCode:" + keyCode);
+            return true;
+        
+//        switch(keyCode) {
+//        case KeyEvent.KEYCODE_BACK:
+//            if (mUIManager.onKeyBack()) {
+//                return true;
+//            } else {
+//                moveTaskToBack(true);
+//                return true;
+//            }
+//        case KeyEvent.KEYCODE_SEARCH:
+//            if (mUIManager.onKeySearch()) {
+//                return true;
+//            } else {
+//                return super.onKeyUp(keyCode, event);
+//            }
+//        default: return super.onKeyUp(keyCode, event);
+//        }
     }
 
     @Override

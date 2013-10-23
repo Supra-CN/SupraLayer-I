@@ -12,6 +12,7 @@ import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.view.ActionMode;
 import android.view.GestureDetector;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +32,7 @@ import cn.supra.supralayer_i.ui.fragments.LauncherFragment;
 import cn.supra.supralayer_i.ui.fragments.LauncherFragment.OnStartPageItemClickedListener;
 import cn.supra.supralayer_i.ui.fragments.PhoneWebViewFragment;
 import cn.supra.supralayer_i.util.Constants;
+import cn.supra.supralayer_i.util.Log;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -235,9 +237,9 @@ public class PhoneUIManager extends BaseUIManager {
 
     @Override
     public boolean onKeySearch() {
-//        setToolbarsVisibility(true);
-//        startHideToolbarsThread();
-//
+        setToolbarsVisibility(true);
+        startHideToolbarsThread();
+
 //        if (!mUrlBar.isUrlBarVisible()) {
 //            mUrlBar.showUrl();
 //        }
@@ -342,6 +344,7 @@ public class PhoneUIManager extends BaseUIManager {
 
     @Override
     public boolean onTouch(View view, MotionEvent event) {
+        Log.i("onTouck", "event:" + event);
         if ((!getCurrentWebViewFragment().isStartPageShown()) &&
                 (event.getActionMasked() == MotionEvent.ACTION_DOWN)) {
             setToolbarsVisibility(false);
@@ -349,6 +352,8 @@ public class PhoneUIManager extends BaseUIManager {
 
         return mGestureDetector.onTouchEvent(event);
     }
+    
+
 
     @Override
     protected void setupUI() {
