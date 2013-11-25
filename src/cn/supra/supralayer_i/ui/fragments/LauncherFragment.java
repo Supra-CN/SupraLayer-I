@@ -18,6 +18,7 @@ package cn.supra.supralayer_i.ui.fragments;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -43,7 +44,7 @@ import cn.supra.supralayer_i.ui.UIManagerProvider;
 import cn.supra.supralayer_i.util.ApplicationUtils;
 import cn.supra.supralayer_i.util.Constants;
 
-public class LauncherFragment extends Fragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class LauncherFragment extends BaseAppFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
     public interface OnStartPageItemClickedListener {
         public void onStartPageItemClicked(String url);
@@ -200,6 +201,66 @@ public class LauncherFragment extends Fragment implements LoaderManager.LoaderCa
             }
             mGrid.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void cleanData() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public boolean canGoBack() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean canForward() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void goBack() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void goForward() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public int getFlag() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public void onActive() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void afterActive() {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public Object clientSnapshot(boolean fullcontent) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void onClientViewResult(Intent intent, int resultCode, int requestCode) {
+        // TODO Auto-generated method stub
+        
     }
 
 }

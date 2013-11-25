@@ -28,7 +28,7 @@ import cn.supra.supralayer_i.ui.components.CustomWebView;
 import cn.supra.supralayer_i.ui.components.CustomWebViewClient;
 import cn.supra.supralayer_i.util.Constants;
 
-public abstract class BaseWebViewFragment extends Fragment {
+public abstract class BaseWebViewFragment extends BaseAppFragment {
 	
 	protected UUID mUUID;
 	

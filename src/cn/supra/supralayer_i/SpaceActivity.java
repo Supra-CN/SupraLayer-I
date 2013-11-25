@@ -150,25 +150,26 @@ public class SpaceActivity extends Activity implements UIManagerProvider {
         filter.addAction(DownloadManager.ACTION_NOTIFICATION_CLICKED);
 
     }
-    
+
     @Override
     protected void onPause() {
         super.onPause();
-        
+
         mUIManager.onMainActivityPause();
     }
-    
+
     @Override
     protected void onDestroy() {
         WebIconDatabase.getInstance().close();
-        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(mPreferenceChangeListener);
+        PreferenceManager.getDefaultSharedPreferences(this)
+                .unregisterOnSharedPreferenceChangeListener(mPreferenceChangeListener);
         unregisterReceiver(mPackagesReceiver);
         super.onDestroy();
     }
-    
+
     @Override
     protected void onStart() {
-//      Controller.getInstance().getAddonManager().bindAddons();
+        // Controller.getInstance().getAddonManager().bindAddons();
         super.onStart();
     }
 
@@ -181,29 +182,21 @@ public class SpaceActivity extends Activity implements UIManagerProvider {
         }
 
     }
-    
-    
+
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
-            Log.i("onKey", "keyCode:" + keyCode);
-            return true;
-        
-//        switch(keyCode) {
-//        case KeyEvent.KEYCODE_BACK:
-//            if (mUIManager.onKeyBack()) {
-//                return true;
-//            } else {
-//                moveTaskToBack(true);
-//                return true;
-//            }
-//        case KeyEvent.KEYCODE_SEARCH:
-//            if (mUIManager.onKeySearch()) {
-//                return true;
-//            } else {
-//                return super.onKeyUp(keyCode, event);
-//            }
-//        default: return super.onKeyUp(keyCode, event);
-//        }
+
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                if (mUIManager.onEventBack()) {
+                    return true;
+                } else {
+                    moveTaskToBack(true);
+                    return true;
+                }
+            default:
+                return super.onKeyUp(keyCode, event);
+        }
     }
 
     @Override
@@ -211,19 +204,19 @@ public class SpaceActivity extends Activity implements UIManagerProvider {
         super.onNewIntent(intent);
         mUIManager.onNewIntent(intent);
     }
-    
+
     @Override
-    public void onActionModeFinished(ActionMode mode) {     
+    public void onActionModeFinished(ActionMode mode) {
         super.onActionModeFinished(mode);
         mUIManager.onActionModeFinished(mode);
     }
 
     @Override
-    public void onActionModeStarted(ActionMode mode) {      
+    public void onActionModeStarted(ActionMode mode) {
         super.onActionModeStarted(mode);
         mUIManager.onActionModeStarted(mode);
     }
-    
+
     @Override
     public UIManager getUIManager() {
         // TODO Auto-generated method stub
@@ -241,16 +234,18 @@ public class SpaceActivity extends Activity implements UIManagerProvider {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-        // TODO Do nothing for now, as default implementation mess up with tabs/fragment management.
+        // TODO Do nothing for now, as default implementation mess up with
+        // tabs/fragment management.
         // In the future, save and restore tabs.
-        //super.onSaveInstanceState(outState);
+        // super.onSaveInstanceState(outState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        // TODO Do nothing for now, as default implementation mess up with tabs/fragment management.
+        // TODO Do nothing for now, as default implementation mess up with
+        // tabs/fragment management.
         // In the future, save and restore tabs.
-        //super.onRestoreInstanceState(savedInstanceState);
+        // super.onRestoreInstanceState(savedInstanceState);
     }
-    
+
 }
