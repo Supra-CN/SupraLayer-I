@@ -15,31 +15,24 @@
 
 package cn.supra.supralayer_i.ui.components;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.UUID;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuItem;
-import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.PluginState;
 import android.webkit.WebView;
-import cn.supra.supralayer_i.R;
+
 import cn.supra.supralayer_i.SpaceActivity;
-import cn.supra.supralayer_i.controllers.Controller;
 import cn.supra.supralayer_i.ui.fragments.BaseWebViewFragment;
 import cn.supra.supralayer_i.util.Constants;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.UUID;
 
 public class CustomWebView extends WebView {
 	

@@ -16,7 +16,6 @@
 package cn.supra.supralayer_i.ui.fragments;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.app.LoaderManager;
 import android.content.Intent;
 import android.content.Loader;
@@ -40,7 +39,6 @@ import cn.supra.supralayer_i.model.BookmarksAdapter;
 import cn.supra.supralayer_i.providers.BookmarksProvider;
 import cn.supra.supralayer_i.providers.BookmarksWrapper;
 import cn.supra.supralayer_i.ui.UIManager;
-import cn.supra.supralayer_i.ui.UIManagerProvider;
 import cn.supra.supralayer_i.util.ApplicationUtils;
 import cn.supra.supralayer_i.util.Constants;
 
@@ -74,7 +72,7 @@ public class LauncherFragment extends BaseAppFragment implements LoaderManager.L
         
         if (!mInitialized) {
             try {
-                mUIManager = ((UIManagerProvider) activity).getUIManager();
+//                mUIManager = ((UIManagerProvider) activity).getUIManager();
             } catch (ClassCastException e) {
                 Log.e("StartPageFragment.onAttach()", e.getMessage());
             }
@@ -116,7 +114,7 @@ public class LauncherFragment extends BaseAppFragment implements LoaderManager.L
                 }
             });
             
-            mGrid.setOnTouchListener(mUIManager);       
+//            mGrid.setOnTouchListener(mUIManager);       
             
             mPreferenceChangeListener = new OnSharedPreferenceChangeListener() {
                 @Override

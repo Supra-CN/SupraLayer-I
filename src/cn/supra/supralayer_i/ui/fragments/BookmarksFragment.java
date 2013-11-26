@@ -21,40 +21,32 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentBreadCrumbs;
 import android.app.LoaderManager;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.database.Cursor;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.preference.PreferenceManager;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import cn.supra.supralayer_i.R;
-import cn.supra.supralayer_i.controllers.Controller;
 import cn.supra.supralayer_i.model.BookmarkHistoryItem;
 import cn.supra.supralayer_i.model.BookmarksAdapter;
 import cn.supra.supralayer_i.providers.BookmarksProvider;
@@ -104,7 +96,7 @@ public class BookmarksFragment extends Fragment implements LoaderManager.LoaderC
 	private OnSharedPreferenceChangeListener mPreferenceChangeListener;
 
 	public BookmarksFragment() {
-		mUIManager = Controller.getInstance().getUIManager();
+//		mUIManager = Controller.getInstance().getUIManager();
 	}
 
 	@Override

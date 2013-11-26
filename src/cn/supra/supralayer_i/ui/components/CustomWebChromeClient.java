@@ -73,11 +73,11 @@ public class CustomWebChromeClient extends WebChromeClient {
 	public boolean onCreateWindow(WebView view, final boolean dialog, final boolean userGesture, final Message resultMsg) {
 		WebView.WebViewTransport transport = (WebView.WebViewTransport) resultMsg.obj;
 		
-		CustomWebView curentWebView = mUIManager.getCurrentWebView();
-		
-		mUIManager.addTab(false, curentWebView.isPrivateBrowsingEnabled());
-		
-		transport.setWebView(mUIManager.getCurrentWebView());
+//		CustomWebView curentWebView = mUIManager.getCurrentWebView();
+//		
+//		mUIManager.addTab(false, curentWebView.isPrivateBrowsingEnabled());
+//		
+//		transport.setWebView(mUIManager.getCurrentWebView());
 		resultMsg.sendToTarget();
 		
 		return true;

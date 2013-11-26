@@ -295,72 +295,72 @@ public class CustomWebViewClient extends WebViewClient {
 	* Search for intent handlers that are specific to this URL
 	* aka, specialized apps like google maps or youtube
 	*/
-	private boolean isSpecializedHandlerAvailable(Intent intent) {
-		PackageManager pm = mUIManager.getMainActivity().getPackageManager();
-		List<ResolveInfo> handlers = pm.queryIntentActivities(intent, PackageManager.GET_RESOLVED_FILTER);
-		if (handlers == null || handlers.size() == 0) {
-			return false;
-		}
-		
-		for (ResolveInfo resolveInfo : handlers) {
-			IntentFilter filter = resolveInfo.filter;
-			if (filter == null) {
-				// No intent filter matches this intent?
-				// Error on the side of staying in the browser, ignore
-				continue;
-			}
-			
-			if (filter.countDataAuthorities() == 0 || filter.countDataPaths() == 0) {
-				// Generic handler, skip
-				continue;
-			}
-			
-			return true;
-		}
-		
-		return false;
-	}
+//	private boolean isSpecializedHandlerAvailable(Intent intent) {
+//		PackageManager pm = mUIManager.getMainActivity().getPackageManager();
+//		List<ResolveInfo> handlers = pm.queryIntentActivities(intent, PackageManager.GET_RESOLVED_FILTER);
+//		if (handlers == null || handlers.size() == 0) {
+//			return false;
+//		}
+//		
+//		for (ResolveInfo resolveInfo : handlers) {
+//			IntentFilter filter = resolveInfo.filter;
+//			if (filter == null) {
+//				// No intent filter matches this intent?
+//				// Error on the side of staying in the browser, ignore
+//				continue;
+//			}
+//			
+//			if (filter.countDataAuthorities() == 0 || filter.countDataPaths() == 0) {
+//				// Generic handler, skip
+//				continue;
+//			}
+//			
+//			return true;
+//		}
+//		
+//		return false;
+//	}
 	
-	private boolean checkUrlLoading(String url) {
-		Intent intent;
-		
-		try {
-			intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
-		} catch (URISyntaxException e) {
-			Log.w("CustomWebViewClient", "Bad URI " + url + ": " + e.getMessage());
-			return false;
-		}
-		
-		if (mUIManager.getMainActivity().getPackageManager().resolveActivity(intent, 0) == null) {
-			String packagename = intent.getPackage();
-			if (packagename != null) {
-				intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:" + packagename));
-				intent.addCategory(Intent.CATEGORY_BROWSABLE);
-				mUIManager.getMainActivity().startActivity(intent);
-			
-				return true;
-			} else {
-				return false;
-			}
-		}
-		
-		intent.addCategory(Intent.CATEGORY_BROWSABLE);
-		intent.setComponent(null);
-		
-		Matcher m = ACCEPTED_URI_SCHEMA.matcher(url);
-		if (m.matches() && !isSpecializedHandlerAvailable(intent)) {
-			return false;
-		}
-		
-		try {
-			if (mUIManager.getMainActivity().startActivityIfNeeded(intent, -1)) {
-				return true;
-			}
-		} catch (ActivityNotFoundException ex) {
-			// ignore the error. If no application can handle the URL,
-			// eg about:blank, assume the browser can handle it.
-		}
-		
-		return false;
-	}
+//	private boolean checkUrlLoading(String url) {
+//		Intent intent;
+//		
+//		try {
+//			intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
+//		} catch (URISyntaxException e) {
+//			Log.w("CustomWebViewClient", "Bad URI " + url + ": " + e.getMessage());
+//			return false;
+//		}
+//		
+//		if (mUIManager.getMainActivity().getPackageManager().resolveActivity(intent, 0) == null) {
+//			String packagename = intent.getPackage();
+//			if (packagename != null) {
+//				intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://search?q=pname:" + packagename));
+//				intent.addCategory(Intent.CATEGORY_BROWSABLE);
+//				mUIManager.getMainActivity().startActivity(intent);
+//			
+//				return true;
+//			} else {
+//				return false;
+//			}
+//		}
+//		
+//		intent.addCategory(Intent.CATEGORY_BROWSABLE);
+//		intent.setComponent(null);
+//		
+//		Matcher m = ACCEPTED_URI_SCHEMA.matcher(url);
+//		if (m.matches() && !isSpecializedHandlerAvailable(intent)) {
+//			return false;
+//		}
+//		
+//		try {
+//			if (mUIManager.getMainActivity().startActivityIfNeeded(intent, -1)) {
+//				return true;
+//			}
+//		} catch (ActivityNotFoundException ex) {
+//			// ignore the error. If no application can handle the URL,
+//			// eg about:blank, assume the browser can handle it.
+//		}
+//		
+//		return false;
+//	}
 }

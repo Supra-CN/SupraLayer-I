@@ -103,13 +103,13 @@ public abstract class BaseWebViewFragment extends BaseAppFragment {
 		}
 		
 		if (mUrlToLoad != null) {
-			mUIManager.loadUrl(this, mUrlToLoad);
+//			mUIManager.loadUrl(this, mUrlToLoad);
 			mUrlToLoad = null;
 		}
 	}
 	
 	private void createWebView(boolean addToParent) {
-		mWebView = new CustomWebView(mUIManager.getMainActivity(), mPrivateBrowsing);
+//		mWebView = new CustomWebView(mUIManager.getMainActivity(), mPrivateBrowsing);
 		
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 		mWebView.setLayoutParams(params);
@@ -119,7 +119,7 @@ public abstract class BaseWebViewFragment extends BaseAppFragment {
 		mWebView.setWebChromeClient(new CustomWebChromeClient(mUIManager));
 		mWebView.setWebViewClient(new CustomWebViewClient(mUIManager));
 		
-		mWebView.setOnTouchListener(mUIManager);		
+//		mWebView.setOnTouchListener(mUIManager);		
 		
 		if ((addToParent) &&
 				(mParentView != null)) {
@@ -137,7 +137,7 @@ public abstract class BaseWebViewFragment extends BaseAppFragment {
 		// through onViewCreated().
 		if ((mUrlToLoad != null) &&
 				(!Constants.URL_ABOUT_START.equals(mUrlToLoad))) {
-			mUIManager.loadUrl(this, mUrlToLoad);
+//			mUIManager.loadUrl(this, mUrlToLoad);
 			mUrlToLoad = null;
 		}
 	}
