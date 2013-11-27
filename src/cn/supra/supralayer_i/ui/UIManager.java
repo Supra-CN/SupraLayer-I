@@ -4,12 +4,19 @@ package cn.supra.supralayer_i.ui;
 import cn.supra.supralayer_i.SpaceActivity;
 import cn.supra.supralayer_i.model.App;
 import cn.supra.supralayer_i.ui.fragments.BaseAppFragment;
+import cn.supra.supralayer_i.ui.fragments.LauncherFragment;
 
+import java.util.HashMap;
+import java.util.Stack;
 import java.util.UUID;
 
 public class UIManager {
     
     private SpaceActivity mActivity;
+    
+    private LauncherFragment mLauncher;
+    private Stack<UUID> mTaskStack;
+    private HashMap<UUID, BaseAppFragment> mFragmentMap;
     
     public UIManager(SpaceActivity activity) {
         mActivity = activity;
