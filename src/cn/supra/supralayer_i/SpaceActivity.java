@@ -57,7 +57,8 @@ public class SpaceActivity extends Activity {
 
         setContentView(R.layout.phone_space_activity);
         mUIManager = new UIManager(this);
-
+        mUIManager.showLauncher();
+        
         // mSpaceView相关；
         // mSpaceView = new FrameLayout(this);
         // mSpaceView.setLayoutParams(new
@@ -71,6 +72,20 @@ public class SpaceActivity extends Activity {
         // mSpaceView.removeAllViews();
         // mSpaceView.addView(mClientManager.getLauncherClient());
     }
+    
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mUIManager.showLauncher();
+    }
+    
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+    }
+    
+    
 
     public UIManager getUIManager() {
         return null;
