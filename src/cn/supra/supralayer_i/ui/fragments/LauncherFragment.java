@@ -17,7 +17,6 @@ package cn.supra.supralayer_i.ui.fragments;
 
 import android.app.Activity;
 import android.app.LoaderManager;
-import android.content.Intent;
 import android.content.Loader;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -27,6 +26,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
@@ -34,7 +34,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import cn.supra.supralayer_i.R;
-import cn.supra.supralayer_i.model.App;
+import cn.supra.supralayer_i.SpaceActivity;
+import cn.supra.supralayer_i.model.AppImpl;
 import cn.supra.supralayer_i.model.BookmarkHistoryItem;
 import cn.supra.supralayer_i.model.BookmarksAdapter;
 import cn.supra.supralayer_i.providers.BookmarksProvider;
@@ -137,6 +138,14 @@ public LauncherFragment() {
             PreferenceManager.getDefaultSharedPreferences(getActivity())
                     .registerOnSharedPreferenceChangeListener(mPreferenceChangeListener);
         }
+        
+        mParentView.findViewById(R.id.handle_view_1).setOnClickListener(new OnClickListener() {
+            
+            @Override
+            public void onClick(View v) {
+                ((SpaceActivity)getActivity()).getUIManager().openAPP(new AppImpl("baidu", "baidu"));
+            }
+        });
 
         return mParentView;
     }

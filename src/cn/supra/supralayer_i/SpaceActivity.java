@@ -88,7 +88,7 @@ public class SpaceActivity extends Activity {
     
 
     public UIManager getUIManager() {
-        return null;
+        return mUIManager;
     }
 
 }

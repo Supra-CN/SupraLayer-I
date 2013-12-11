@@ -44,19 +44,16 @@ public class UIManager {
         return null;
     }
     
-    UUID openAPP(App app){
+    public UUID openAPP(App app){
         BaseAppFragment fragment = AppFragmentFactory.getInstance().createAppFragment(app);
         UUID id = fragment.getUUID();
         mFragmentMap.put(id, fragment);
         mTaskStack.add(id);
-        return fragment.getUUID();
+        setCurrentFragment(id);
+        return id;
     }
     
-    
-    
-    
-    
-    public LauncherFragment getLauncher(){
+    private LauncherFragment getLauncher(){
         if(null == mLauncherId){
             LauncherFragment launcherFragment = AppFragmentFactory.getInstance().creatLauncherFragment();
             mLauncherId = launcherFragment.getUUID();
